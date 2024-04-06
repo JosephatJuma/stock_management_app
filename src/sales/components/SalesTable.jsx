@@ -12,7 +12,7 @@ import {
 } from "@mui/icons-material";
 import { IconButton, Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import  dayjs from "dayjs";
+import dayjs from "dayjs";
 // import utc from "dayjs/plugin/utc";
 // import timezone from "dayjs/plugin/timezone";
 // import {
@@ -25,9 +25,6 @@ import { useNavigate } from "react-router-dom";
 
 function SalesTable({ data }) {
   const [filterQuery, setFilterQuery] = React.useState("");
-
-  
-
 
   function createData(id, customerName, refNo, date, totalAmount, items) {
     return {
@@ -60,7 +57,7 @@ function SalesTable({ data }) {
             {row.id.slice(0, 8).toUpperCase()}
           </TableCell>
           <TableCell align="left">{row?.customerName}</TableCell>
-          <TableCell align="right">{row?.refNo || "__"}</TableCell>
+
           <TableCell align="right">
             {dayjs(row?.date).format("MMM D, YYYY HH:MM:ss")}
           </TableCell>
@@ -154,8 +151,6 @@ function SalesTable({ data }) {
     );
   }
 
-  
-
   const rows = data.map((item) =>
     createData(
       item.id,
@@ -223,7 +218,7 @@ function SalesTable({ data }) {
               <TableCell />
               <TableCell>Sale ID</TableCell>
               <TableCell>Customer</TableCell>
-              <TableCell align="right">Refrence Number</TableCell>
+              {/* <TableCell align="right">Refrence Number</TableCell> */}
               <TableCell align="right">Date Sold</TableCell>
               <TableCell align="right">Total Sale</TableCell>
             </TableRow>

@@ -71,7 +71,7 @@
   box-shadow: none !important;
 }
 
-.graphWrapper {
+.main-wrapper {
   display: flex;
   justify-content: space-between;
   /* gap: 1.0rem; */
@@ -83,7 +83,7 @@
 }
 
 .pieChart {
-  width: 25%;
+  width: 29%;
 }
 
 @media screen and (max-width: 760px) {
@@ -98,7 +98,19 @@
   .lineGraph {
     width: 100%;
   }
+  .lineGraph {
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: transparent transparent; /* Set the color of the scrollbar */
+  }
+
+  /* For WebKit browsers */
+  .lineGraph::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+  }
+
   .pieChart {
     width: 100%;
+    margin-top: 10px;
   }
 }
