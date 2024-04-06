@@ -61,7 +61,6 @@ const AddSalesForm = () => {
       validationSchema={validationSchema}
       onSubmit={(values) => {
         handleAddSale(values);
-        //console.log(values);
       }}
     >
       {({ handleSubmit, values, errors, touched, setFieldValue }) => {

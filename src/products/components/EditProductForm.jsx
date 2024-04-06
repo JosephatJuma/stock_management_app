@@ -14,16 +14,15 @@ import {
   FormControlLabel,
   Tooltip,
   Switch,
- 
 } from "@mui/material";
 import useCategories from "../../api/hooks/useCategories";
-import {  Save } from "@mui/icons-material";
+import { Save } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import * as yup from "yup";
 import useProducts from "../../api/hooks/useProducts";
 import dayjs from "dayjs";
 import { LoadingButton } from "@mui/lab";
-import {FormSubmitButton} from "../../components"
+import { FormSubmitButton } from "../../components";
 const validationSchema = yup.object().shape({
   name: yup.string().required("Product name is required"),
   unitPrice: yup
@@ -62,8 +61,6 @@ const EditProductForm = () => {
     !categories.length > 0 && handleFetchCategories();
   }, []);
 
-  console.log(selectedProduct);
-
   return (
     <Formik
       initialValues={{
@@ -80,7 +77,6 @@ const EditProductForm = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values) => {
-        //console.log(values);
         handleEditProduct(values, selectedProduct?.id);
       }}
     >
@@ -105,11 +101,10 @@ const EditProductForm = () => {
             <form onSubmit={handleSubmit}>
               <div>
                 <Paper sx={{ padding: 1, borderRadius: 1, marginTop: 1 }}>
-                  
-                    <Typography>
-                      Profit: {values?.sellingPrice - values?.unitPrice}
-                    </Typography>
-                 
+                  <Typography>
+                    Profit: {values?.sellingPrice - values?.unitPrice}
+                  </Typography>
+
                   <Grid container spacing={2} xs={12} sm={12} md={12}>
                     <Grid item xs={6} sm={4} md={2}>
                       <InputLabel style={{ fontSize: "0.8rem" }}>
@@ -306,7 +301,11 @@ const EditProductForm = () => {
                   </Grid>
                 </Paper>
                 <FormSubmitButton
-                icon={<Save />} title={"Edit Product"} loadingTitle={"Editing Product"} loading={submitting}/>
+                  icon={<Save />}
+                  title={"Edit Product"}
+                  loadingTitle={"Editing Product"}
+                  loading={submitting}
+                />
 
                 {/* {submitting ? (
                   <LoadingButton
