@@ -86,7 +86,7 @@
   width: 29%;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 900px) {
   .contentWrapper {
     display: flex;
     flex-direction: column;

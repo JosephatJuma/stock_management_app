@@ -6,6 +6,7 @@ import {
   Cell,
   ResponsiveContainer,
   Tooltip,
+  Brush,
 } from "recharts";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from "recharts";
 
@@ -16,7 +17,7 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 export default function ProfitSummaryChart() {
   const data = useSelector((state) => state.dashboard.stats);
   return (
-    <ResponsiveContainer width="100%" height={200}>
+    <ResponsiveContainer width="100%" height={250}>
       <LineChart data={data}>
         <YAxis />
 
@@ -25,7 +26,7 @@ export default function ProfitSummaryChart() {
           dataKey="sales"
           stroke="#0088FE"
           strokeWidth={2}
-          strokeDasharray="3 4"
+          strokeDasharray="8 10"
         />
         <Line
           type="monotone"
@@ -41,6 +42,7 @@ export default function ProfitSummaryChart() {
         />
 
         <XAxis dataKey="name" />
+        <Brush dataKey="name" height={30} stroke="#8884d8" />
         <Legend />
         <Tooltip />
       </LineChart>
