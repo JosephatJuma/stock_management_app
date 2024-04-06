@@ -1,6 +1,13 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Paper, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TablePagination,
+} from "@mui/material";
 import { TableContainer, TableHead } from "@mui/material";
 import { Collapse, Button, Typography, Chip } from "@mui/material";
 import {
@@ -25,7 +32,17 @@ import { useNavigate } from "react-router-dom";
 
 function SalesTable({ data }) {
   const [filterQuery, setFilterQuery] = React.useState("");
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
   function createData(id, customerName, refNo, date, totalAmount, items) {
     return {
       id,
@@ -224,12 +241,23 @@ function SalesTable({ data }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <Row key={row.id} row={row} />
-            ))}
+            {rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => (
+                <Row key={row.id} row={row} />
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25, 100]}
+        component="div"
+        count={filteredRows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </Paper>
   );
 }
