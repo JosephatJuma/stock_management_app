@@ -7,23 +7,27 @@ import { FormModal } from "../components";
 import EditProductForm from "./components/EditProductForm";
 function Products() {
   const dispatch = useDispatch();
-  const {products,showEditProductModal,selectedProduct} = useSelector((state) => state.products);
+  const { products, showEditProductModal, selectedProduct } = useSelector(
+    (state) => state.products
+  );
   const { handleFetchProducts } = useProducts();
   useEffect(() => {
-    handleFetchProducts();
+    if (Object.keys(products).length === 0) {
+      handleFetchProducts();
+    }
   }, []);
   return (
     <div>
       <ProductsTable data={products} />
       <FormModal
-          open={showEditProductModal}
-          handleClose={() => dispatch(toggleShowEditProductModal())}
-          title={`Edit ${selectedProduct?.name}`}
-          maxWidth="md"
-          fullScreen={true}
-        >
-          <EditProductForm />
-        </FormModal>
+        open={showEditProductModal}
+        handleClose={() => dispatch(toggleShowEditProductModal())}
+        title={`Edit ${selectedProduct?.name}`}
+        maxWidth="md"
+        fullScreen={true}
+      >
+        <EditProductForm />
+      </FormModal>
     </div>
   );
 }
