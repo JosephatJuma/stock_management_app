@@ -13,7 +13,7 @@ function SummeryData() {
         <Card
           className="card-content"
           sx={{
-            borderRadius: 1,
+            borderRadius: 2,
             backgroundColor: "purple",
             padding: 1,
             height: "100%",
@@ -48,7 +48,7 @@ function SummeryData() {
         <Card
           className="card-content"
           sx={{
-            borderRadius: 1,
+            borderRadius: 2,
             backgroundColor: "#87CEEB",
             padding: 1,
             height: "100%",
@@ -83,7 +83,7 @@ function SummeryData() {
         <Card
           className="card-content"
           sx={{
-            borderRadius: 1,
+            borderRadius: 2,
             backgroundColor: "#0F9D58",
             padding: 1,
             height: "100%",
@@ -118,7 +118,7 @@ function SummeryData() {
         <Card
           className="card-content"
           sx={{
-            borderRadius: 1,
+            borderRadius: 2,
             backgroundColor: "#FFBB28",
             padding: 1,
             height: "100%",
@@ -152,7 +152,7 @@ function SummeryData() {
         <Card
           className="card-content"
           sx={{
-            borderRadius: 1,
+            borderRadius: 2,
             backgroundColor: "#000080",
             padding: 1,
             height: "100%",
@@ -187,7 +187,7 @@ function SummeryData() {
         <Card
           className="card-content"
           sx={{
-            borderRadius: 1,
+            borderRadius: 2,
             backgroundColor: "#000080",
             padding: 1,
             height: "100%",

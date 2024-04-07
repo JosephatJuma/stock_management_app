@@ -17,6 +17,7 @@ import {
   FormModal,
   Header,
   DrawerComponent,
+  LogoutConfirmDialogue,
 } from "./components";
 
 import { toggleShowAddProductModal } from "./redux/slices/products.slice";
@@ -108,7 +109,11 @@ function MainLayout(props) {
             },
           }}
         >
-          <DrawerComponent drawerWidth={drawerWidth} theme={themeMode}  toggleDrawer={()=>{}} />
+          <DrawerComponent
+            drawerWidth={drawerWidth}
+            theme={themeMode}
+            toggleDrawer={() => {}}
+          />
         </Drawer>
       </Box>
       <Box
@@ -142,7 +147,7 @@ function MainLayout(props) {
           fullScreen={true}
         >
           {/* <AddProductForm /> */}
-          <ProductForm/>
+          <ProductForm />
         </FormModal>
         <FormModal
           open={sales.showAddSaleModal}
@@ -153,7 +158,6 @@ function MainLayout(props) {
         >
           <AddSalesForm />
         </FormModal>
-       
 
         <SuccessAlert
           message={notification.success}
@@ -170,6 +174,7 @@ function MainLayout(props) {
           message={`Do you want to delete this staff?`}
           performing={deleting}
         /> */}
+        <LogoutConfirmDialogue />
       </Box>
     </Box>
   );

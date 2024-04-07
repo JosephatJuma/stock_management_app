@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setLoading } from "../../redux/slices/auth.slice";
+import { setLoading, toggleShowLogout } from "../../redux/slices/auth.slice";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import ApiClient from "../apiClient";
@@ -39,6 +39,7 @@ function useLogin() {
     Cookies.remove("access_token");
     Cookies.remove("user");
     Cookies.remove("company");
+    dispatch(toggleShowLogout());
     navigate("/auth", { replace: true });
   };
   return { handleLogin, handleLogout };

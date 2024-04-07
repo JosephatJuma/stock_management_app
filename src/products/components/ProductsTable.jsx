@@ -139,7 +139,7 @@ function ProductsTable({ data }) {
     );
   });
   return (
-    <Paper sx={{ width: "100%", overflow: "scroll", borderRadius: 2 }}>
+    <Paper sx={{ width: "100%", overflow: "scroll", borderRadius: 0 }}>
       <Paper
         style={{
           alignSelf: "auto",
@@ -179,7 +179,10 @@ function ProductsTable({ data }) {
             <TableRow hover role="checkbox" tabIndex={-1}>
               {columns
                 .filter(
-                  (column) => column.id !== "description" && column.id !== "id"
+                  (column) =>
+                    column.id !== "description" &&
+                    column.id !== "id" &&
+                    column.id !== "batch"
                 )
                 .map((column) => (
                   <TableCell
@@ -207,7 +210,11 @@ function ProductsTable({ data }) {
                     <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                       {columns.map((column) => {
                         const value = row[column.id];
-                        if (column.id === "description" || column.id === "id") {
+                        if (
+                          column.id === "description" ||
+                          column.id === "id" ||
+                          column.id === "batch"
+                        ) {
                           return null; // Skip rendering the column with id "description"
                         }
                         return (
