@@ -14,14 +14,14 @@ import { Link } from "react-router-dom";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Key, Login, Password } from "@mui/icons-material";
 import { Formik } from "formik";
-import { TextInputField, PasswordInput,FormSubmitButton } from "../components";
+import { TextInputField, PasswordInput, FormSubmitButton } from "../components";
 import { companies } from "../utils/companies";
 import { loginSchema } from "../shemas/loginSchema";
 import useLogin from "../api/hooks/useLogin";
 import { useSelector } from "react-redux";
 export default function SignIn() {
   const { handleLogin } = useLogin();
-  const {loading} = useSelector((state) => state.auth)
+  const { loading } = useSelector((state) => state.auth);
 
   return (
     <Box
@@ -47,7 +47,6 @@ export default function SignIn() {
         validationSchema={loginSchema}
         onSubmit={(values) => {
           handleLogin(values);
-          //console.log(values);
         }}
       >
         {({ handleSubmit }) => (

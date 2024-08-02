@@ -6,7 +6,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 5000",
     "build": "npm i && vite build",
     "serve": "vite preview",
     "production": "node app",

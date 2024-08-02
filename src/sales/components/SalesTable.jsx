@@ -1,6 +1,13 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Paper, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TablePagination,
+} from "@mui/material";
 import { TableContainer, TableHead } from "@mui/material";
 import { Collapse, Button, Typography, Chip } from "@mui/material";
 import {
@@ -12,7 +19,7 @@ import {
 } from "@mui/icons-material";
 import { IconButton, Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import  dayjs from "dayjs";
+import dayjs from "dayjs";
 // import utc from "dayjs/plugin/utc";
 // import timezone from "dayjs/plugin/timezone";
 // import {
@@ -25,10 +32,17 @@ import { useNavigate } from "react-router-dom";
 
 function SalesTable({ data }) {
   const [filterQuery, setFilterQuery] = React.useState("");
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
-
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
   function createData(id, customerName, refNo, date, totalAmount, items) {
     return {
       id,
@@ -60,7 +74,7 @@ function SalesTable({ data }) {
             {row.id.slice(0, 8).toUpperCase()}
           </TableCell>
           <TableCell align="left">{row?.customerName}</TableCell>
-          <TableCell align="right">{row?.refNo || "__"}</TableCell>
+
           <TableCell align="right">
             {dayjs(row?.date).format("MMM D, YYYY HH:MM:ss")}
           </TableCell>
@@ -154,8 +168,6 @@ function SalesTable({ data }) {
     );
   }
 
-  
-
   const rows = data.map((item) =>
     createData(
       item.id,
@@ -223,18 +235,29 @@ function SalesTable({ data }) {
               <TableCell />
               <TableCell>Sale ID</TableCell>
               <TableCell>Customer</TableCell>
-              <TableCell align="right">Refrence Number</TableCell>
+              {/* <TableCell align="right">Refrence Number</TableCell> */}
               <TableCell align="right">Date Sold</TableCell>
               <TableCell align="right">Total Sale</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <Row key={row.id} row={row} />
-            ))}
+            {rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => (
+                <Row key={row.id} row={row} />
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25, 100]}
+        component="div"
+        count={filteredRows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </Paper>
   );
 }

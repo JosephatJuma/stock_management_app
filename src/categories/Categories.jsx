@@ -15,7 +15,9 @@ function Categories() {
   const state = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   useEffect(() => {
-    handleFetchCategories();
+    if (Object.keys(state.categories).length === 0) {
+      handleFetchCategories();
+    }
   }, []);
   return (
     <div>

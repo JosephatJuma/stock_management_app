@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {  Formik, FieldArray, Field } from "formik";
+import { Formik, FieldArray, Field } from "formik";
 import {
   TextField,
   Button,
@@ -68,7 +68,6 @@ const ProductForm = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values) => {
-        console.log(values);
         handleAddProduct(values);
       }}
     >
@@ -299,45 +298,46 @@ const ProductForm = () => {
                       }
                     ></Button>
                     {submitting ? (
-                       <LoadingButton
-                       className="btnNext"
-                       loading
-                       color="secondary"
-                       loadingPosition="start"
-                       variant="contained"
-                       sx={{
-                         fontSize: "14px",
-                         padding: "8px 40px",
-                         borderRadius: "15px",
-                       }}
-                     >
-                       Adding {values.products.length>1 ? "Products" : "Product"}
-                     </LoadingButton>
-                    ): <Button
-                    onClick={handleSubmit}
-                    type="submit"
-                    className="submit-btn"
-                    sx={{
-                      fontSize: "14px",
-                      padding: "8px 40px",
-                      borderColor: "#0F9D58",
-                      color: "#fff",
-                      borderRadius: "5px",
-                      cursor: "pointer",
-                      backgroundColor: "#0F9D58",
+                      <LoadingButton
+                        className="btnNext"
+                        loading
+                        color="secondary"
+                        loadingPosition="start"
+                        variant="contained"
+                        sx={{
+                          fontSize: "14px",
+                          padding: "8px 40px",
+                          borderRadius: "15px",
+                        }}
+                      >
+                        Adding{" "}
+                        {values.products.length > 1 ? "Products" : "Product"}
+                      </LoadingButton>
+                    ) : (
+                      <Button
+                        onClick={handleSubmit}
+                        type="submit"
+                        className="submit-btn"
+                        sx={{
+                          fontSize: "14px",
+                          padding: "8px 40px",
+                          borderColor: "#0F9D58",
+                          color: "#fff",
+                          borderRadius: "5px",
+                          cursor: "pointer",
+                          backgroundColor: "#0F9D58",
 
-                      margin: 1,
-                      "&:hover": {
-                        backgroundColor: "#0F9D58c0",
-                      },
-                    }}
-                    endIcon={<Save />}
-                  >
-                    Submit{" "}
-                    {values.products.length > 1 ? "Products" : "Product"}
-                  </Button>}
-                   
-                   
+                          margin: 1,
+                          "&:hover": {
+                            backgroundColor: "#0F9D58c0",
+                          },
+                        }}
+                        endIcon={<Save />}
+                      >
+                        Submit{" "}
+                        {values.products.length > 1 ? "Products" : "Product"}
+                      </Button>
+                    )}
                   </div>
                 )}
               />

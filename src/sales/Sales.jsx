@@ -6,7 +6,9 @@ const Sales = () => {
   const sales = useSelector((state) => state.sales.sales);
   const { handleFetchSales } = useSales();
   useEffect(() => {
-    handleFetchSales();
+    if (Object.keys(sales).length === 0) {
+      handleFetchSales();
+    }
   }, []);
   return (
     <div>

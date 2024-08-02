@@ -15,12 +15,14 @@ const RequireAuth = ({ children }) => {
     const checkAuth = async () => {
       try {
         const accessToken = Cookies.get("access_token");
+
         if (!accessToken) {
           //if no token, redirect to login
           return navigation("/auth");
         } else {
           const decoded = jwtDecode(accessToken, { header: true });
           const currentDate = new Date().getTime() / 1000;
+
           if (currentDate >= decoded.exp + 2) {
             //Access Token expired
             return navigation("/auth");
@@ -42,7 +44,7 @@ const RequireAuth = ({ children }) => {
   const getUser = async () => {
     try {
       const user = Cookies.get("user");
-      if (typeof user === 'undefined') {
+      if (typeof user === "undefined") {
         // Handle the missing cookie here
         navigation("/auth/signup");
         return;
@@ -54,21 +56,20 @@ const RequireAuth = ({ children }) => {
       }
       dispatch(setUser(data));
       const company = Cookies.get("company");
-      if (typeof company === 'undefined') {
-       // Handle the missing cookie here
-       navigation("/company/create");
-       return;
+      if (typeof company === "undefined") {
+        // Handle the missing cookie here
+        navigation("/company/create");
+        return;
       }
       const companyData = JSON.parse(company);
       if (!companyData) {
-       navigation("/company/create");
-       return;
+        navigation("/company/create");
+        return;
       }
       dispatch(setCompany(companyData));
-      
     } catch (error) {
-       navigation("/auth");
-       return;
+      navigation("/auth");
+      return;
     }
   };
 

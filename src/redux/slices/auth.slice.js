@@ -6,6 +6,7 @@ const initialState = {
   loading: false,
   submitting: false,
   company: null,
+  showLogout: false,
 };
 
 const authSlice = createSlice({
@@ -16,7 +17,6 @@ const authSlice = createSlice({
       state.user = action.payload;
     },
     setTokens(state, action) {
-
       state.tokens = action.payload;
     },
     setLoading(state, action) {
@@ -28,11 +28,19 @@ const authSlice = createSlice({
     setCompany(state, action) {
       state.company = action.payload;
     },
+    toggleShowLogout(state, action) {
+      state.showLogout = !state.showLogout;
+    },
   },
 });
 
-export const { setUser, setTokens, setLoading, setSubmitting, setCompany } =
-  authSlice.actions;
+export const {
+  setUser,
+  setTokens,
+  setLoading,
+  setSubmitting,
+  setCompany,
+  toggleShowLogout,
+} = authSlice.actions;
 
-  export default authSlice.reducer;
-  
+export default authSlice.reducer;

@@ -4,9 +4,9 @@ import { IconButton, Tooltip, Typography } from "@mui/material";
 import { ListItemIcon, Menu, Button, Box, Avatar } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { changeMode } from "../redux/slices/themeSlice";
-import useLogin from "../api/hooks/useLogin";
+
+import { toggleShowLogout } from "../redux/slices/auth.slice";
 import {
-  AdminPanelSettings,
   Settings,
   Person,
   Brightness4,
@@ -18,7 +18,7 @@ export default function AccountMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(false);
   const dispatch = useDispatch();
   const themeMode = useSelector((state) => state.theme.mode);
-  const { handleLogout } = useLogin();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -38,7 +38,7 @@ export default function AccountMenu(props) {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar >
+            <Avatar>
               <Person />
             </Avatar>
           </IconButton>
@@ -93,7 +93,7 @@ export default function AccountMenu(props) {
           </ListItemIcon>
           {themeMode === "light" ? " Dark Theme" : "Light Theme"}
         </MenuItem>
-        
+
         <MenuItem>
           <ListItemIcon>
             <Settings fontSize="small" />
@@ -107,7 +107,7 @@ export default function AccountMenu(props) {
           Manage Profile
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleLogout}>
+        <MenuItem onClick={() => dispatch(toggleShowLogout())}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

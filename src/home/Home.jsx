@@ -5,11 +5,17 @@ import { Summery } from "./components";
 import "./styles/main-content.css";
 
 function Home() {
-  const { handleFetchDashboardData,handleFetchStats } = useDashboard();
-  const  statType= useSelector((state) => state.dashboard.statType);
+  const { handleFetchDashboardData, handleFetchStats } = useDashboard();
+  const { statType, stats, dashboardData } = useSelector(
+    (state) => state.dashboard
+  );
   useEffect(() => {
-    handleFetchDashboardData();
-    handleFetchStats(statType);
+    if (Object.keys(dashboardData).length === 0) {
+      handleFetchDashboardData();
+    }
+    if (Object.keys(stats).length === 0) {
+      handleFetchStats(statType);
+    }
   }, []);
 
   return (

@@ -46,7 +46,6 @@ export default function ForgotPassword() {
         validationSchema={changeSchema}
         onSubmit={(values) => {
           handleResetpassword(values);
-          console.log(values);
         }}
       >
         {({ handleSubmit }) => (

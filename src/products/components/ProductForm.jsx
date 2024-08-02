@@ -85,7 +85,6 @@ const ProductForm = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values) => {
-        console.log(values);
         handleAddProduct(values);
       }}
     >
@@ -284,27 +283,33 @@ const ProductForm = () => {
                                   //disabled={values.products?.[index]?.isAutomated}
                                   InputProps={{
                                     startAdornment: (
-                                      <Tooltip title={values.products?.[index]?.isAutomated ?"Make it manual": "Make it automatic" }>
-                                      <FormControlLabel
-                                        control={
-                                          <Switch
-                                            checked={
-                                              values.products?.[index]
-                                                ?.isAutomated
-                                            }
-                                            onChange={() => {
-                                              setFieldValue(
-                                                `products[${index}].isAutomated`,
-                                                !product.isAutomated
-                                              );
-                                            }}
-                                            name="auto"
-                                            size="small"
-                                            
-                                          />
+                                      <Tooltip
+                                        title={
+                                          values.products?.[index]?.isAutomated
+                                            ? "Make it manual"
+                                            : "Make it automatic"
                                         }
-                                        //label="Auto"
-                                      /></Tooltip>
+                                      >
+                                        <FormControlLabel
+                                          control={
+                                            <Switch
+                                              checked={
+                                                values.products?.[index]
+                                                  ?.isAutomated
+                                              }
+                                              onChange={() => {
+                                                setFieldValue(
+                                                  `products[${index}].isAutomated`,
+                                                  !product.isAutomated
+                                                );
+                                              }}
+                                              name="auto"
+                                              size="small"
+                                            />
+                                          }
+                                          //label="Auto"
+                                        />
+                                      </Tooltip>
                                     ),
                                   }}
                                   size="small"

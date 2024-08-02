@@ -8,14 +8,19 @@ function SummeryData() {
 
   return (
     <Grid container spacing={2} alignItems="stretch">
-      {/* Alumni Card */}
+      {/* Sales Card */}
       <Grid item xs={12} sm={6} md={3}>
         <Card
           className="card-content"
-          sx={{ borderRadius: 1, backgroundColor: "purple", padding: 1, height:'100%' }}
+          sx={{
+            borderRadius: 2,
+            backgroundColor: "purple",
+            padding: 1,
+            height: "100%",
+          }}
         >
           {state.loading ? (
-            <PulseLoader color="#fff" height={50} width={15} />
+            <PulseLoader color="#fff" height={30} width={15} />
           ) : (
             <div
               style={{
@@ -25,10 +30,10 @@ function SummeryData() {
               }}
             >
               <div className="left">
-                <img src={sales} alt="Sales" width={50} />
+                <img src={sales} alt="Sales" width={30} />
               </div>
               <div>
-                <Typography variant="subtitle1">Sales</Typography>
+                <Typography variant="subtitle1">Total Sales</Typography>
                 <Typography variant="h6">
                   {state.dashboardData?.totalSales}
                 </Typography>
@@ -38,14 +43,19 @@ function SummeryData() {
         </Card>
       </Grid>
 
-      {/* Students Card */}
+      {/* Products Card */}
       <Grid item xs={12} sm={6} md={3}>
         <Card
           className="card-content"
-          sx={{ borderRadius: 1, backgroundColor: "#87CEEB", padding: 1, height:'100%' }}
+          sx={{
+            borderRadius: 2,
+            backgroundColor: "#87CEEB",
+            padding: 1,
+            height: "100%",
+          }}
         >
           {state.loading ? (
-            <PulseLoader color="#fff" height={50} width={15} />
+            <PulseLoader color="#fff" height={30} width={15} />
           ) : (
             <div
               style={{
@@ -55,7 +65,7 @@ function SummeryData() {
               }}
             >
               <div className="left">
-                <img src={products} alt="products" width={50} />
+                <img src={products} alt="products" width={30} />
               </div>
               <div className="right students">
                 <Typography variant="subtitle1">Products</Typography>
@@ -68,19 +78,19 @@ function SummeryData() {
         </Card>
       </Grid>
 
-      {/* Programs Card */}
+      {/* Income Card */}
       <Grid item xs={12} sm={6} md={3}>
         <Card
           className="card-content"
           sx={{
-            borderRadius: 1,
+            borderRadius: 2,
             backgroundColor: "#0F9D58",
             padding: 1,
-            height:'100%'
+            height: "100%",
           }}
         >
           {state.loading ? (
-            <PulseLoader color="#fff" height={50} width={15} />
+            <PulseLoader color="#fff" height={30} width={15} />
           ) : (
             <div
               style={{
@@ -90,7 +100,7 @@ function SummeryData() {
               }}
             >
               <div className="left">
-                <img src={income} alt="Income" width={50} />
+                <img src={income} alt="Income" width={30} />
               </div>
               <div>
                 <Typography variant="subtitle1">Gross Sales</Typography>
@@ -103,19 +113,19 @@ function SummeryData() {
         </Card>
       </Grid>
 
-      {/* Applicants Card */}
+      {/* Stock Card */}
       <Grid item xs={12} sm={6} md={3}>
         <Card
           className="card-content"
           sx={{
-            borderRadius: 1,
+            borderRadius: 2,
             backgroundColor: "#FFBB28",
             padding: 1,
-            height:'100%'
+            height: "100%",
           }}
         >
           {state.loading ? (
-            <PulseLoader color="#fff" height={50} width={15} />
+            <PulseLoader color="#fff" height={30} width={15} />
           ) : (
             <div
               style={{
@@ -125,12 +135,81 @@ function SummeryData() {
               }}
             >
               <div className="left">
-                <img src={stock} alt="Stock" width={50} />
+                <img src={stock} alt="Stock" width={30} />
               </div>
               <div className="right staff">
-                <Typography variant="subtitle1">Stock</Typography>
+                <Typography variant="subtitle1">Current Stock</Typography>
                 <Typography variant="h6">
                   UGX. {state.dashboardData?.stock}
+                </Typography>
+              </div>
+            </div>
+          )}
+        </Card>
+      </Grid>
+      {/* Profit Card */}
+      <Grid item xs={12} sm={6} md={3}>
+        <Card
+          className="card-content"
+          sx={{
+            borderRadius: 2,
+            backgroundColor: "#000080",
+            padding: 1,
+            height: "100%",
+          }}
+        >
+          {state.loading ? (
+            <PulseLoader color="#fff" height={30} width={15} />
+          ) : (
+            <div
+              style={{
+                color: "#fff",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <div className="left">
+                <img src={stock} alt="Stock" width={30} />
+              </div>
+              <div className="right staff">
+                <Typography variant="subtitle1">Today's Profit</Typography>
+                <Typography variant="h6">
+                  UGX. {state.dashboardData?.todayStats?.profit}
+                </Typography>
+              </div>
+            </div>
+          )}
+        </Card>
+      </Grid>
+
+      {/* Today Sales Card */}
+      <Grid item xs={12} sm={6} md={3}>
+        <Card
+          className="card-content"
+          sx={{
+            borderRadius: 2,
+            backgroundColor: "#000080",
+            padding: 1,
+            height: "100%",
+          }}
+        >
+          {state.loading ? (
+            <PulseLoader color="#fff" height={30} width={15} />
+          ) : (
+            <div
+              style={{
+                color: "#fff",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <div className="left">
+                <img src={stock} alt="Stock" width={30} />
+              </div>
+              <div className="right staff">
+                <Typography variant="subtitle1">Sales Today</Typography>
+                <Typography variant="h6">
+                  UGX. {state.dashboardData?.todayStats?.sales}
                 </Typography>
               </div>
             </div>

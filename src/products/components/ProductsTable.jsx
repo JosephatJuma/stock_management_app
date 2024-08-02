@@ -20,9 +20,12 @@ import {
 } from "@mui/icons-material";
 import { IconButton, InputBase } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import  dayjs from "dayjs";
+import dayjs from "dayjs";
 
-import { toggleShowEditProductModal,setSelectedProduct } from "../../redux/slices/products.slice";
+import {
+  toggleShowEditProductModal,
+  setSelectedProduct,
+} from "../../redux/slices/products.slice";
 import { useNavigate } from "react-router-dom";
 
 function ProductsTable({ data }) {
@@ -37,7 +40,7 @@ function ProductsTable({ data }) {
   const handleOpen = (event, product) => {
     setAnchorEl(event.currentTarget);
     //update global state for selected products
-     dispatch(setSelectedProduct(product));
+    dispatch(setSelectedProduct(product));
   };
 
   const handleClose = () => {
@@ -53,7 +56,7 @@ function ProductsTable({ data }) {
   };
   const editproducts = () => {
     setAnchorEl(null);
-     dispatch(toggleShowEditProductModal());
+    dispatch(toggleShowEditProductModal());
   };
 
   const deleteproducts = () => {
@@ -78,7 +81,7 @@ function ProductsTable({ data }) {
     { id: "quantity", label: "QTY" },
     { id: "unitPrice", label: "Unit Price (UGX)", minWidth: 40 },
     { id: "totalPrice", label: "Total Price (UGX)", minWidth: 40 },
-    {id: "expiryDate", label: "Expires", minWidth: 40 },
+    { id: "expiryDate", label: "Expires", minWidth: 40 },
     {
       id: "action",
       label: "Action",
@@ -98,11 +101,11 @@ function ProductsTable({ data }) {
     },
   ];
 
-  function createData(id, name, quantity, cat, unitPrice,expDate) {
+  function createData(id, name, quantity, cat, unitPrice, expDate) {
     const totalPrice = quantity * unitPrice;
     const expiryDate = dayjs(expDate).format("MMMM D, YYYY");
     const category = cat?.name;
-    const batch =cat?.batch?.name
+    const batch = cat?.batch?.name;
     return {
       id,
       name,
@@ -123,7 +126,6 @@ function ProductsTable({ data }) {
       item?.category,
       item?.unitPrice,
       item?.expDate
-
     )
   );
 
@@ -137,7 +139,7 @@ function ProductsTable({ data }) {
     );
   });
   return (
-    <Paper sx={{ width: "100%", overflow: "scroll", borderRadius: 2 }}>
+    <Paper sx={{ width: "100%", overflow: "scroll", borderRadius: 0 }}>
       <Paper
         style={{
           alignSelf: "auto",
@@ -177,7 +179,10 @@ function ProductsTable({ data }) {
             <TableRow hover role="checkbox" tabIndex={-1}>
               {columns
                 .filter(
-                  (column) => column.id !== "description" && column.id !== "id"
+                  (column) =>
+                    column.id !== "description" &&
+                    column.id !== "id" &&
+                    column.id !== "batch"
                 )
                 .map((column) => (
                   <TableCell
@@ -205,7 +210,11 @@ function ProductsTable({ data }) {
                     <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                       {columns.map((column) => {
                         const value = row[column.id];
-                        if (column.id === "description" || column.id === "id") {
+                        if (
+                          column.id === "description" ||
+                          column.id === "id" ||
+                          column.id === "batch"
+                        ) {
                           return null; // Skip rendering the column with id "description"
                         }
                         return (
