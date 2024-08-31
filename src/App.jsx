@@ -9,6 +9,7 @@ import Settings from "./settings/Settings";
 import { Auth, SignIn, SignUp,RequireAuth,ForgotPassword , Authentic,ResetPassword,EmailSent} from "./auth";
 import { CreateCompony,Company, } from "./companies";
 import Batches from "./batches/Batches";
+import ProfilePage from "./profile/Profile";
 import ProductForm from "./products/components/ProductForm";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="categories" element={<Categories />} />
             <Route path="settings" element={<Settings />} />
             <Route path="batches" element={<Batches />} />
+            <Route path={"profile"} element={<ProfilePage/>}/>
             
           </Route>
          

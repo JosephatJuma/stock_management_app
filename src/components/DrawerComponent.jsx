@@ -9,14 +9,16 @@ import {
   ListItem,
 } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-import { Store, Dashboard, Percent, Category } from "@mui/icons-material";
+import {Store, Dashboard, Percent, Category, AccountBox, Settings, Logout} from "@mui/icons-material";
 
 import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {toggleShowLogout} from "../redux/slices/auth.slice";
 
 function DrawerComponent({ drawerWidth, toggleDrawer, theme }) {
   const navigate = useNavigate();
   const [active, setActive] = React.useState("Dashboard");
-
+const dispatch=useDispatch()
   const handleChange = (itemName) => {
     setActive(itemName);
     toggleDrawer();
@@ -44,12 +46,17 @@ function DrawerComponent({ drawerWidth, toggleDrawer, theme }) {
       icon: <Percent />,
       link: "/sales",
     },
+    {
+      name: "My Profile",
+      icon: <AccountBox />,
+      link: "/profile",
+    },
 
-    // {
-    //   name: "Invetory Settings",
-    //   icon: <Settings />,
-    //   link: "/settings",
-    // },
+    {
+      name: "Settings",
+      icon: <Settings />,
+      link: "/settings",
+    },
   ];
   return (
     <div>
@@ -103,7 +110,37 @@ function DrawerComponent({ drawerWidth, toggleDrawer, theme }) {
             </React.Fragment>
           );
         })}
+        <ListItem
+            disablePadding
+
+            onClick={() => dispatch(toggleShowLogout())}
+            sx={
+                 {
+                   position:"absolute",
+                   bottom:-180,
+                  backgroundColor: "warning",
+                  borderRadius: 1,
+                   width:'90%',
+                   height:40,
+
+                }
+            }
+        >
+          <ListItemButton>
+            <ListItemIcon
+            >
+              <Logout/>
+            </ListItemIcon>
+            <ListItemText
+                primary={"logout"}
+                style={
+                  theme==="light"?{color: "#000"}:{ color: "#fff" }
+                }
+            />
+          </ListItemButton>
+        </ListItem>
       </List>
+
     </div>
   );
 }
