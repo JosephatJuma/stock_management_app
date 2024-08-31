@@ -34,7 +34,7 @@ function SummeryData() {
               </div>
               <div>
                 <Typography variant="subtitle1">Total Sales</Typography>
-                <Typography variant="h6">
+                <Typography variant="p">
                   {state.dashboardData?.totalSales}
                 </Typography>
               </div>
@@ -69,7 +69,7 @@ function SummeryData() {
               </div>
               <div className="right students">
                 <Typography variant="subtitle1">Products</Typography>
-                <Typography variant="h6">
+                <Typography variant="p">
                   {state.dashboardData?.totalProducts}
                 </Typography>
               </div>
@@ -104,7 +104,7 @@ function SummeryData() {
               </div>
               <div>
                 <Typography variant="subtitle1">Gross Sales</Typography>
-                <Typography variant="h6">
+                <Typography variant="p">
                   UGX. {state.dashboardData?.grossSales}
                 </Typography>
               </div>
@@ -139,7 +139,7 @@ function SummeryData() {
               </div>
               <div className="right staff">
                 <Typography variant="subtitle1">Current Stock</Typography>
-                <Typography variant="h6">
+                <Typography variant="p">
                   UGX. {state.dashboardData?.stock}
                 </Typography>
               </div>
@@ -173,7 +173,7 @@ function SummeryData() {
               </div>
               <div className="right staff">
                 <Typography variant="subtitle1">Today's Profit</Typography>
-                <Typography variant="h6">
+                <Typography variant="p">
                   UGX. {state.dashboardData?.todayStats?.profit}
                 </Typography>
               </div>
@@ -208,7 +208,7 @@ function SummeryData() {
               </div>
               <div className="right staff">
                 <Typography variant="subtitle1">Sales Today</Typography>
-                <Typography variant="h6">
+                <Typography variant="p">
                   UGX. {state.dashboardData?.todayStats?.sales}
                 </Typography>
               </div>
