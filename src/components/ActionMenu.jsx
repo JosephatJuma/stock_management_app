@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MenuItem, Divider } from "@mui/material";
 import { IconButton, Tooltip, Typography } from "@mui/material";
-import { ListItemIcon, Menu, Button, Box, Avatar } from "@mui/material";
+import { ListItemIcon, Menu,  Box, Avatar, Badge } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { changeMode } from "../redux/slices/themeSlice";
 
@@ -11,10 +11,10 @@ import {
   Person,
   Brightness4,
   Logout,
-  Person2,
+  Person2, Message, Notifications,
 } from "@mui/icons-material";
 
-export default function AccountMenu(props) {
+export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(false);
   const dispatch = useDispatch();
   const themeMode = useSelector((state) => state.theme.mode);
@@ -46,8 +46,9 @@ export default function AccountMenu(props) {
       </Box>
       <Menu
         anchorEl={anchorEl}
+
         id="account-menu"
-        open={anchorEl ? true : false}
+        open={anchorEl}
         onClose={handleClose}
         onClick={handleClose}
         PaperProps={{
@@ -79,7 +80,35 @@ export default function AccountMenu(props) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <Typography sx={{ padding: "16px" }}>Configerations</Typography>
+        <Typography sx={{ padding: "16px" }}>Configurations</Typography>
+        {/*<Divider />*/}
+        {/*<MenuItem>*/}
+        {/*  <ListItemIcon>*/}
+        {/*    <Message fontSize="small" />*/}
+        {/*  </ListItemIcon>*/}
+        {/*  <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>*/}
+        {/*    Messages*/}
+        {/*    <Badge*/}
+        {/*        badgeContent={10}*/}
+        {/*        color="primary"*/}
+        {/*        sx={{ marginLeft: 7 }}*/}
+        {/*    />*/}
+        {/*  </Box>*/}
+        {/*</MenuItem>*/}
+        {/*<MenuItem>*/}
+        {/*  <ListItemIcon>*/}
+        {/*    <Notifications fontSize="small" />*/}
+        {/*  </ListItemIcon>*/}
+
+        {/*  <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>*/}
+        {/*    Notifications*/}
+        {/*    <Badge*/}
+        {/*        badgeContent={10}*/}
+        {/*        color="primary"*/}
+        {/*        sx={{ marginLeft: 5 }}*/}
+        {/*    />*/}
+        {/*  </Box>*/}
+        {/*</MenuItem>*/}
         <Divider />
         <MenuItem
           onClick={

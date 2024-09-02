@@ -5,6 +5,7 @@ import { setCompany, setUser } from "../redux/slices/auth.slice";
 import { useDispatch } from "react-redux";
 import Authenticating from "./Authenticating";
 import { useNavigate } from "react-router-dom";
+import {changeMode} from "../redux/slices/themeSlice"
 
 const RequireAuth = ({ children }) => {
   const navigation = useNavigate();
@@ -17,20 +18,20 @@ const RequireAuth = ({ children }) => {
         const accessToken = Cookies.get("access_token");
 
         if (!accessToken) {
-          //if no token, redirect to login
+          //if no token, redirect to log in
           return navigation("/auth");
         } else {
           const decoded = jwtDecode(accessToken, { header: true });
           const currentDate = new Date().getTime() / 1000;
 
-          if (currentDate >= decoded.exp + 2) {
+          if (currentDate >= decoded.kid + 2) {
             //Access Token expired
             return navigation("/auth");
           }
           await getUser();
         }
       } catch (error) {
-        //if error just naviagate to landing screen
+        //if error just navigate to landing screen
         return navigation("/auth");
       } finally {
         setAuthChecked(true);
@@ -67,10 +68,26 @@ const RequireAuth = ({ children }) => {
         return;
       }
       dispatch(setCompany(companyData));
+
+      //get theme cookie
+      const theme = Cookies.get("theme");
+      console.log(theme)
+      if (typeof theme === "undefined") {
+        dispatch(changeMode("light"));
+        return;
+      }
+
+      if (!theme) {
+        dispatch(changeMode("light"));
+        return;
+      }
+      dispatch(changeMode(theme));
     } catch (error) {
       navigation("/auth");
-      return;
+
     }
+
+
   };
 
   return authChecked ? children : <Authenticating />;

@@ -11,7 +11,7 @@ import {
   Divider,
 } from "@mui/material";
 
-import { Folder, Delete, Edit } from "@mui/icons-material";
+import {Folder,  MoreVert} from "@mui/icons-material";
 
 export default function Category({ category }) {
   return (
@@ -20,7 +20,7 @@ export default function Category({ category }) {
         secondaryAction={
           <>
             <IconButton edge="end" aria-label="delete">
-              <Edit />
+              <MoreVert />
             </IconButton>
             {/* <IconButton edge="end" aria-label="edit">
               <Delete />

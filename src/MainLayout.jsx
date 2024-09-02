@@ -22,6 +22,7 @@ import {
 
 import { toggleShowAddProductModal } from "./redux/slices/products.slice";
 import { toggleShowAddSaleModal } from "./redux/slices/sales.slice";
+import MessageBox from "./chats/components/MessageBox";
 const drawerWidth = 240;
 
 function MainLayout(props) {
@@ -176,6 +177,7 @@ function MainLayout(props) {
         /> */}
         <LogoutConfirmDialogue />
       </Box>
+      {/*<MessageBox />*/}
     </Box>
   );
 }

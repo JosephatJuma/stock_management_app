@@ -17,8 +17,8 @@ function FormModal(props) {
       onClose={props.handleClose}
       aria-labelledby="scroll-dialog-title"
       aria-describedby="scroll-dialog-description"
-      fullScreen={props.fullScreen}
-      maxWidth={props.maxWidth}
+      fullScreen={false}
+      maxWidth={"lg"}
     >
       <AppBar sx={{ position: "relative", backgroundColor: "#0F9D58" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
