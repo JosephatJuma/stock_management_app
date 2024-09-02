@@ -114,7 +114,7 @@ const Settings = () => {
                   control={
                     <Switch
                         checked={themeMode !== 'light'}
-                        onChange={
+                        onClick={
                           themeMode === "light"
                               ? () => dispatch(changeMode("dark"))
                               : () => dispatch(changeMode("light"))

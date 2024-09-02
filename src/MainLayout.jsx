@@ -176,9 +176,8 @@ function MainLayout(props) {
           performing={deleting}
         /> */}
         <LogoutConfirmDialogue />
-
       </Box>
-      <MessageBox/>
+      {/*<MessageBox />*/}
     </Box>
   );
 }

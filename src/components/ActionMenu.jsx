@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MenuItem, Divider } from "@mui/material";
 import { IconButton, Tooltip, Typography } from "@mui/material";
-import { ListItemIcon, Menu,  Box, Avatar } from "@mui/material";
+import { ListItemIcon, Menu,  Box, Avatar, Badge } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { changeMode } from "../redux/slices/themeSlice";
 
@@ -81,19 +81,34 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <Typography sx={{ padding: "16px" }}>Configurations</Typography>
-        <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            <Message fontSize="small" />
-          </ListItemIcon>
-          Messages
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <Notifications fontSize="small" />
-          </ListItemIcon>
-          Notifications
-        </MenuItem>
+        {/*<Divider />*/}
+        {/*<MenuItem>*/}
+        {/*  <ListItemIcon>*/}
+        {/*    <Message fontSize="small" />*/}
+        {/*  </ListItemIcon>*/}
+        {/*  <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>*/}
+        {/*    Messages*/}
+        {/*    <Badge*/}
+        {/*        badgeContent={10}*/}
+        {/*        color="primary"*/}
+        {/*        sx={{ marginLeft: 7 }}*/}
+        {/*    />*/}
+        {/*  </Box>*/}
+        {/*</MenuItem>*/}
+        {/*<MenuItem>*/}
+        {/*  <ListItemIcon>*/}
+        {/*    <Notifications fontSize="small" />*/}
+        {/*  </ListItemIcon>*/}
+
+        {/*  <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>*/}
+        {/*    Notifications*/}
+        {/*    <Badge*/}
+        {/*        badgeContent={10}*/}
+        {/*        color="primary"*/}
+        {/*        sx={{ marginLeft: 5 }}*/}
+        {/*    />*/}
+        {/*  </Box>*/}
+        {/*</MenuItem>*/}
         <Divider />
         <MenuItem
           onClick={
