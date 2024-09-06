@@ -40,7 +40,7 @@ function useLogin() {
     Cookies.remove("user");
     Cookies.remove("company");
     dispatch(toggleShowLogout());
-    navigate("/auth", { replace: true });
+    window.location.reload();
   };
   return { handleLogin, handleLogout };
 }
