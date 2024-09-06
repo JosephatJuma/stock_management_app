@@ -293,7 +293,10 @@ const AddSalesForm = () => {
               </form>
             </Grid>
             <Grid item xs={12} sm={12} md={5}>
-              <ReceiptComponent items={values.items} />
+              <ReceiptComponent
+                items={values.items}
+                printDisabled={errors.items?.length > 0}
+              />
             </Grid>
           </Grid>
         );

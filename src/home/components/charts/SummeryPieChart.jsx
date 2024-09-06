@@ -26,7 +26,8 @@ const SummeryPieChart = () => {
   //   { name: "June", sales: 800 },
   // ];
 
-  const data = useSelector((state) => state.dashboard.stats);
+  const { stats, statType } = useSelector((state) => state.dashboard);
+
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
     cx,
@@ -68,34 +69,49 @@ const SummeryPieChart = () => {
       spacing={2}
       alignItems="center"
       justifyContent={"center"}
-      padding={1}
+      padding={"0.1rem"}
     >
-      <Text x={0} y={0} dx={10} dy={10} fontSize={14} fontWeight="bold">
-        Sales Pie-Chart
-      </Text>
-      <ResponsiveContainer width="100%" height={200}>
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#8884d8"
-            dataKey="sales"
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-          <Sector />
-          <Tooltip />
-        </PieChart>
-      </ResponsiveContainer>
+      <Card
+        sx={{
+          padding: "0.1rem",
+          width: "100%",
+        }}
+      >
+        <Text
+          x={0}
+          y={0}
+          dx={10}
+          dy={10}
+          fontSize={14}
+          fontWeight="bold"
+          style={{ textTransform: "capitalize" }}
+        >
+          {statType} sales pie chart
+        </Text>
+        <ResponsiveContainer width="100%" height={200}>
+          <PieChart>
+            <Pie
+              data={stats}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={80}
+              fill="#8884d8"
+              dataKey="sales"
+            >
+              {stats.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Sector />
+            <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
+      </Card>
     </Grid>
   );
 };
