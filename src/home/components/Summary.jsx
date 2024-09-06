@@ -33,7 +33,10 @@ function Summary() {
       <Grid container className="main-wrapper">
         <div className="lineGraph">
           <SummeryData />
-          <div className="chart-heading" style={{ padding: 10 }}>
+          <div
+            className="chart-heading"
+            style={{ padding: 10, minHeight: "100hv" }}
+          >
             <Typography
               style={{ fontWeight: "600" }}
               variant="h6"
@@ -61,7 +64,7 @@ function Summary() {
           <SummeryBarChart />
         </div>
 
-        <Card
+        <Box
           className="pieChart"
           sx={{
             padding: 1,
@@ -73,7 +76,7 @@ function Summary() {
           <div>
             <ProfitSummaryChart />
           </div>
-        </Card>
+        </Box>
       </Grid>
     </Box>
   );
