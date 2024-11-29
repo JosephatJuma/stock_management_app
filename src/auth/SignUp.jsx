@@ -17,6 +17,8 @@ import useRegister from "../api/hooks/useRegister";
 export default function SignUp() {
   const { handleRegister } = useRegister();
   const { loading } = useSelector((state) => state.auth);
+
+  const themeMode = useSelector((state) => state.theme.mode);
   return (
     <Box
       sx={{
@@ -24,8 +26,11 @@ export default function SignUp() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        // width: "100%",
-        //backgroundColor: "red",
+        backgroundColor: themeMode === "light" && "#fff",
+        width: "100%",
+        borderRadius: "10px",
+        boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+        paddingY: "10px",
       }}
     >
       <Avatar sx={{ m: 1, bgcolor: "#0F9D58", height: "70px", width: "70px" }}>
