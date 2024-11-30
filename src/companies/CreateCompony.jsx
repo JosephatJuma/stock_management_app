@@ -23,6 +23,8 @@ export default function CreateCompony() {
   const { handleCreateCompany } = useCompany();
   const { loading, user } = useSelector((state) => state.auth);
 
+  const themeMode = useSelector((state) => state.theme.mode);
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -31,6 +33,11 @@ export default function CreateCompony() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          backgroundColor: themeMode === "light" ? "#fff" : "#3D3333",
+          width: "100%",
+          // borderRadius: "10px",
+          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+          paddingY: "10px",
         }}
       >
         <Avatar
