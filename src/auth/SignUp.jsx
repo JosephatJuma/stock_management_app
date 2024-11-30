@@ -26,9 +26,8 @@ export default function SignUp() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: themeMode === "light" && "#fff",
+        backgroundColor: themeMode === "light" ? "#fff" : "#3D3333",
         width: "100%",
-        borderRadius: "10px",
         boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
         paddingY: "10px",
       }}
