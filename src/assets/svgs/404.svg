@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <rect width="600" height="400" fill="#f3f4f6" />
+  <circle cx="300" cy="200" r="150" fill="#cbd5e1" />
+  <path 
+    d="M260 180c0 20-15 36-34 36s-34-16-34-36 15-36 34-36 34 16 34 36z"
+    fill="#ffffff" 
+  />
+  <path 
+    d="M410 180c0 20-15 36-34 36s-34-16-34-36 15-36 34-36 34 16 34 36z"
+    fill="#ffffff" 
+  />
+  <ellipse cx="260" cy="180" rx="10" ry="15" fill="#1f2937" />
+  <ellipse cx="410" cy="180" rx="10" ry="15" fill="#1f2937" />
+  <path 
+    d="M230 250c50 30 90 30 140 0" 
+    stroke="#1f2937" 
+    stroke-width="5" 
+    stroke-linecap="round" 
+  />
+  <text
+    x="50%"
+    y="96%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    font-family="Arial, sans-serif"
+    font-size="70"
+    fill="#1f2937"
+  >
+    404
+  </text>
+</svg>
