@@ -4,10 +4,13 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import ApiClient from "../apiClient";
 import useSetError from "./useSetError";
+import usePost from "./usePost";
 function useLogin() {
   const navigate = useNavigate();
   const { captureError } = useSetError();
   const dispatch = useDispatch();
+
+  const { submitData, submitting, data, error } = usePost();
   const from = navigate.state?.from?.pathname || { pathname: "/" };
   const apiClient = new ApiClient();
 
